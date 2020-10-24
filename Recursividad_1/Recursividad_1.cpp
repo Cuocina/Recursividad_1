@@ -1,36 +1,37 @@
 #include <iostream>
 using namespace std;
 
+// Interfaces:
+
 int ObtenerSumatoriaHastaCien(int comienzo);
 int ObtenerFactorial(int n);
+
+//Precondicion: @n>0
+//Postcondicion: Devuelve el numero fibonacci equivalente.
 int ObtenerFibonacci(int n);
 void MostrarReversa(char cadenaCaracteres[]);
 void ObtenerMaximo(int vector[], int indiceComienzo, int indiceFin);// Divide & Conquer
 
 
 
-// 0 1 1 2 3 5
-
-//Fibonacci de n
-//{
- // n ==0 , 0
-// n == 1, 1
-// n > 1, Fibonacci(n-2) + Fibonacci(n-1)
-//}
-
+// Código Cliente:
 
 int main() {
 	int resultado = ObtenerSumatoriaHastaCien(1);
+	int vector[] = { 1; 7; 21; 35; 35; 21; 7; 1 };
 	cout << resultado << endl;
 	resultado = ObtenerFactorial(10);
 	cout << resultado << endl;
 	resultado = ObtenerFibonacci(8);
 	cout << resultado << endl;
+	resultado = ObtenerMaxmo(vector, 0, 7);
+	cout << resultado << endl;
 
 	return 0;
 }
 
-// O(N)
+// Imprementaciones:
+
 int ObtenerSumatoriaHastaCien(int comienzo) {
 	int sumatoria = 0;
 	if (comienzo <= 100) {
@@ -62,4 +63,14 @@ int ObtenerFibonacci(int n) {
 			break;
 	}
 	return Fibonacci;
+}
+
+void ObtenerMaximo(int vector[], int indiceComienzo, int indiceFin) {
+	maximo = 0;
+	while (indiceComienzo < indiceFin) {
+		if (ObtenerMaximo(vector, indiceComienzo + 1, indiceFin) > maximo)
+			maximo = vector[indiceComienzo + 1];
+	}
+	
+	return maximo;
 }
