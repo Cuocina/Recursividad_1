@@ -10,7 +10,7 @@ int ObtenerFactorial(int n);
 //Postcondicion: Devuelve el numero fibonacci equivalente.
 int ObtenerFibonacci(int n);
 void MostrarReversa(char cadenaCaracteres[]);
-void ObtenerMaximo(int vector[], int indiceComienzo, int indiceFin);// Divide & Conquer
+int ObtenerMaximo(int vector[], int indiceComienzo, int indiceFin);// Divide & Conquer
 
 
 
@@ -18,13 +18,13 @@ void ObtenerMaximo(int vector[], int indiceComienzo, int indiceFin);// Divide & 
 
 int main() {
 	int resultado = ObtenerSumatoriaHastaCien(1);
-	int vector[] = { 1; 7; 21; 35; 35; 21; 7; 1 };
+	int vector[] = { 1, 7, 21, 35, 35, 21, 7, 1 };
 	cout << resultado << endl;
 	resultado = ObtenerFactorial(10);
 	cout << resultado << endl;
 	resultado = ObtenerFibonacci(8);
 	cout << resultado << endl;
-	resultado = ObtenerMaxmo(vector, 0, 7);
+	resultado = ObtenerMaximo(vector, 0, 7);
 	cout << resultado << endl;
 
 	return 0;
@@ -65,11 +65,12 @@ int ObtenerFibonacci(int n) {
 	return Fibonacci;
 }
 
-void ObtenerMaximo(int vector[], int indiceComienzo, int indiceFin) {
-	maximo = 0;
+int ObtenerMaximo(int vector[], int indiceComienzo, int indiceFin) {
+	int maximo = 0;
 	while (indiceComienzo < indiceFin) {
-		if (ObtenerMaximo(vector, indiceComienzo + 1, indiceFin) > maximo)
+		if (ObtenerMaximo(vector, indiceComienzo + 1, indiceFin) > maximo) {
 			maximo = vector[indiceComienzo + 1];
+		}	
 	}
 	
 	return maximo;
