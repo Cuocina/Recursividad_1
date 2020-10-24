@@ -1,19 +1,65 @@
-// Recursividad_1.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-//
-
 #include <iostream>
+using namespace std;
 
-int main()
-{
-    std::cout << "Hello World!\n";
+int ObtenerSumatoriaHastaCien(int comienzo);
+int ObtenerFactorial(int n);
+int ObtenerFibonacci(int n);
+void MostrarReversa(char cadenaCaracteres[]);
+void ObtenerMaximo(int vector[], int indiceComienzo, int indiceFin);// Divide & Conquer
+
+
+
+// 0 1 1 2 3 5
+
+//Fibonacci de n
+//{
+ // n ==0 , 0
+// n == 1, 1
+// n > 1, Fibonacci(n-2) + Fibonacci(n-1)
+//}
+
+
+int main() {
+	int resultado = ObtenerSumatoriaHastaCien(1);
+	cout << resultado << endl;
+	resultado = ObtenerFactorial(10);
+	cout << resultado << endl;
+	resultado = ObtenerFibonacci(8);
+	cout << resultado << endl;
+
+	return 0;
 }
 
-// Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
-// Depurar programa: F5 o menú Depurar > Iniciar depuración
+// O(N)
+int ObtenerSumatoriaHastaCien(int comienzo) {
+	int sumatoria = 0;
+	if (comienzo <= 100) {
+		sumatoria = comienzo + ObtenerSumatoriaHastaCien(comienzo + 1);
+	}
 
-// Sugerencias para primeros pasos: 1. Use la ventana del Explorador de soluciones para agregar y administrar archivos
-//   2. Use la ventana de Team Explorer para conectar con el control de código fuente
-//   3. Use la ventana de salida para ver la salida de compilación y otros mensajes
-//   4. Use la ventana Lista de errores para ver los errores
-//   5. Vaya a Proyecto > Agregar nuevo elemento para crear nuevos archivos de código, o a Proyecto > Agregar elemento existente para agregar archivos de código existentes al proyecto
-//   6. En el futuro, para volver a abrir este proyecto, vaya a Archivo > Abrir > Proyecto y seleccione el archivo .sln
+	return sumatoria;
+}
+
+int ObtenerFactorial(int n) {
+	int factorial = 1;
+	if (n > 0) {
+		factorial = n * ObtenerFactorial(n - 1);
+	}
+	return factorial;
+}
+
+int ObtenerFibonacci(int n) {
+	int Fibonacci = 0;
+	switch(n) {
+		case 0:
+			Fibonacci = 0;
+			break;
+		case 1:
+			Fibonacci = 1;
+			break;
+		default:
+			Fibonacci = ObtenerFibonacci(n - 2) + ObtenerFibonacci(n - 1);
+			break;
+	}
+	return Fibonacci;
+}
